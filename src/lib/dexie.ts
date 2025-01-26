@@ -1,12 +1,12 @@
-import * as _Dexie from "dexie";
+import Dexie, { type EntityTable } from "dexie";
 
 interface EventTable {
   eventId: number;
   name: string;
 }
 
-const db = new _Dexie.Dexie("_db") as _Dexie.Dexie & {
-  event: _Dexie.EntityTable<EventTable, "eventId">;
+const db = new Dexie("_db") as Dexie & {
+  event: EntityTable<EventTable, "eventId">;
 };
 
 db.version(1).stores({
